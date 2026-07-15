@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SG Biocon — Direction Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f5f5f5; color: #111827; }
+
+    .preview-label {
+      background: #111; color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      padding: 8px 20px;
+    }
+
+    /* ── TOKENS ── */
+    :root {
+      --teal: #33726F;
+      --teal-dark: #285C59;
+      --teal-light: #EFF6F6;
+      --blue: #5D92CA;
+      --blue-light: #EBF3FA;
+      --white: #FFFFFF;
+      --text-dark: #111827;
+      --text-mid: #374151;
+      --text-muted: #6B7280;
+    }
+
+    /* ════════════════════════════════════════
+       1. HERO
+       ════════════════════════════════════════ */
+    .hero {
+      background: #fff;
+      padding: 72px 0 80px;
+      overflow: hidden;
+    }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 2px;
+      background: var(--teal);
+    }
+
+    .hero-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+    .hero-heading em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.075rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: all 200ms ease;
+    }
+    .btn-primary {
+      background: var(--teal); color: #fff;
+      box-shadow: 0 4px 14px rgba(51,114,111,.3);
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(51,114,111,.4);
+    }
+    .btn-primary svg { transition: transform 200ms ease; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    /* Hero image panel */
+    .hero-image-panel {
+      position: relative;
+    }
+
+    /* Soft radial wash behind the product */
+    .hero-image-panel::before {
+      content: '';
+      position: absolute;
+      inset: -15% -10%;
+      background: radial-gradient(ellipse at 55% 50%,
+        rgba(51,114,111,.12) 0%,
+        rgba(93,146,202,.10) 45%,
+        transparent 70%);
+      z-index: 0;
+    }
+
+    .hero-product-img {
+      position: relative; z-index: 1;
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      /* subtle float shadow */
+      filter: drop-shadow(0 24px 48px rgba(51,114,111,.18))
+              drop-shadow(0  8px 16px rgba(0,0,0,.08));
+    }
+
+    /* Clean model frame for when no image is supplied */
+    .hero-model-frame {
+      position: relative; z-index: 1;
+      background: linear-gradient(145deg, #EFF6F6 0%, #EBF3FA 60%, #f0f4ff 100%);
+      border-radius: 24px;
+      aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px;
+      border: 1px solid rgba(93,146,202,.15);
+      box-shadow: 0 20px 48px rgba(51,114,111,.12), 0 4px 12px rgba(0,0,0,.04);
+    }
+    .hero-model-frame__icon { color: var(--teal); opacity: .6; }
+    .hero-model-frame__name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--teal);
+      letter-spacing: -.01em;
+    }
+    .hero-model-frame__sub {
+      font-size: .8rem; color: var(--text-muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* Trust badges */
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px;
+      margin-top: 28px; flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .8rem; font-weight: 600;
+      color: var(--text-muted);
+    }
+    .trust-badge svg { color: var(--teal); flex-shrink: 0; }
+    .trust-divider { width: 1px; height: 20px; background: #e5e7eb; }
+
+    /* ════════════════════════════════════════
+       2. PRODUCT CARD — HM70 featured
+       ════════════════════════════════════════ */
+    .card-section {
+      background: #f8fafb;
+      padding: 72px 0;
+    }
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--teal);
+    }
+    .section-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      letter-spacing: -.02em; margin-bottom: 48px;
+      color: var(--text-dark);
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 12px 32px rgba(51,114,111,.08);
+      border: 2px solid var(--teal);
+      max-width: 480px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.1), 0 24px 48px rgba(51,114,111,.15);
+    }
+
+    /* Top image area */
+    .card-image-area {
+      background: linear-gradient(160deg, var(--teal-light) 0%, var(--blue-light) 100%);
+      padding: 40px 40px 32px;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #90ee90; border-radius: 50%;
+    }
+
+    /* Clean model frame inside card */
+    .card-model-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(145deg, rgba(255,255,255,.8) 0%, rgba(235,243,250,.6) 100%);
+      border-radius: 16px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(51,114,111,.12);
+      box-shadow: inset 0 2px 8px rgba(51,114,111,.05);
+    }
+    .card-model-frame svg { color: var(--teal); opacity: .55; }
+    .card-model-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.25rem; font-weight: 700;
+      color: var(--teal); letter-spacing: -.02em;
+    }
+    .card-model-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .7rem; font-weight: 600;
+      color: var(--text-muted); letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    /* If a real product image is dropped in */
+    .card-model-frame img {
+      max-height: 180px; width: auto;
+      filter: drop-shadow(0 8px 20px rgba(51,114,111,.2));
+    }
+
+    /* Card body */
+    .card-body { padding: 32px; }
+
+    .card-series {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 6px;
+    }
+    .card-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .card-desc {
+      font-size: .925rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    /* Tech bullets */
+    .card-bullets {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .card-bullets li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .875rem; color: var(--text-mid); line-height: 1.5;
+    }
+    .bullet-icon {
+      width: 18px; height: 18px;
+      flex-shrink: 0; margin-top: 1px;
+      color: var(--teal);
+    }
+    .bullet-tech {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; color: var(--text-dark);
+    }
+
+    /* Expand specs */
+    .card-specs-toggle {
+      width: 100%;
+      background: none; border: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .85rem; font-weight: 600;
+      color: var(--blue); cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 0;
+      border-top: 1px solid #f0f0f0;
+      margin-bottom: 0;
+      transition: color 200ms ease;
+    }
+    .card-specs-toggle:hover { color: var(--teal); }
+    .card-specs-toggle svg { transition: transform 250ms ease; }
+    .card-specs-toggle.open svg { transform: rotate(180deg); }
+
+    .card-specs {
+      display: none;
+      padding-top: 16px;
+    }
+    .card-specs.open { display: block; }
+
+    .spec-row {
+      display: flex; justify-content: space-between;
+      font-size: .8rem; padding: 7px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; color: var(--text-muted);
+    }
+    .spec-value { color: var(--text-dark); text-align: right; max-width: 60%; }
+
+    .card-cta {
+      width: 100%; margin-top: 24px;
+      justify-content: center;
+    }
+
+    /* Models pills */
+    .card-models {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 20px;
+    }
+    .model-pill {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .75rem; font-weight: 600;
+      background: var(--teal-light); color: var(--teal);
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .model-pill--hero {
+      background: var(--teal); color: #fff;
+    }
+
+    /* ════════════════════════════════════════
+       3. ICON SET
+       ════════════════════════════════════════ */
+    .icons-section {
+      background: #fff;
+      padding: 72px 0;
+    }
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .icon-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+    }
+    .icon-wrap {
+      width: 64px; height: 64px;
+      background: var(--teal-light);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal);
+      transition: background 200ms ease, transform 200ms ease;
+    }
+    .icon-wrap:hover {
+      background: var(--teal); color: #fff;
+      transform: translateY(-3px);
+    }
+    .icon-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-muted); text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SECTION 1: HERO ── -->
+<div class="preview-label">Preview · 1 of 3 — Hero</div>
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div>
+        <p class="hero-eyebrow">Authorized Samsung Healthcare Distributor</p>
+        <h1 class="hero-heading">
+          Samsung ultrasound,<br>
+          <em>built for the clinics</em><br>
+          that need it most.
+        </h1>
+        <p class="hero-sub">Diagnostic-grade imaging from a global leader in electronics, priced for African healthcare and backed by service that keeps your practice running. From women's health to cardiovascular and point-of-care, we help you image more patients with less downtime.</p>
+
+        <button class="btn btn-primary">
+          Get a quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="hero-trust">
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v5c0 5.25 3.9 10.15 9 11.35C17.1 22.15 21 17.25 21 12V7L12 2z"/></svg>
+            Authorized Distributor
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Shipped Direct from Korea
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Installations in Ghana
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: product image -->
+      <div class="hero-image-panel">
+        <!--
+          WHEN product image is provided, replace the hero-model-frame div below with:
+          <img class="hero-product-img" src="public/images/products/v8.png" alt="Samsung V8 ultrasound system" />
+
+          For now, using the V6 banner image cropped/masked, or the clean styled frame below.
+        -->
+        <img class="hero-product-img"
+             src="public/images/products/v6_kv.png"
+             alt="Samsung Series V ultrasound system"
+             style="border-radius:20px;object-position:center center;" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 2: PRODUCT CARD — HM70 ── -->
+<div class="preview-label">Preview · 2 of 3 — Point-of-Care / HM70 Card</div>
+<section class="card-section">
+  <div class="container">
+    <p class="section-label">Product Lines</p>
+    <h2 class="section-heading">Samsung ultrasound systems</h2>
+
+    <div class="product-card">
+
+      <!-- Image area -->
+      <div class="card-image-area">
+        <div class="card-badge">Most Requested</div>
+        <div class="card-model-frame">
+          <!--
+            Drop the real HM70 image here:
+            <img src="public/images/products/hm70.png" alt="Samsung HM70" />
+          -->
+          <!-- Clean placeholder until image is supplied -->
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ultrasound probe/transducer icon -->
+            <rect x="20" y="4" width="12" height="26" rx="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="26" y1="30" x2="26" y2="38" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2"/>
+            <path d="M14 42 Q26 36 38 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- scan wave arcs -->
+            <path d="M10 24 Q26 34 42 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".4"/>
+            <path d="M6 18 Q26 32 46 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".2"/>
+          </svg>
+          <div class="card-model-name">HM70</div>
+          <div class="card-model-sub">Point-of-Care · Samsung</div>
+        </div>
+      </div>
+
+      <!-- Card body -->
+      <div class="card-body">
+        <div class="card-series">Point-of-Care Ultrasound</div>
+        <div class="card-name">HM70 — Built for the Field</div>
+        <p class="card-desc">
+          Compact, dependable imaging at the bedside and in the field. The HM70 is the system Samsung kept available specifically for markets like West Africa — portable, proven, and priced to reach more clinics without compromising on image quality.
+        </p>
+
+        <ul class="card-bullets">
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- crystal/gem -->
+              <path d="M9 2l5 3.5-5 9.5-5-9.5L9 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <line x1="4" y1="5.5" x2="14" y2="5.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span><span class="bullet-tech">Crystal Architecture</span> — Samsung's CrystalBeam + CrystalLive imaging engine for sharper, more consistent image quality in any setting.</span>
+          </li>
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- S-Vue transducer wave -->
+              <path d="M2 9 Q5 4 8 9 Q11 14 14 9 Q16 6 17 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span><span class="bullet-tech">S-Vue Transducer</span> — Multi-frequency probes purpose-built for Point-of-Care workflows, from abdominal to cardiac and vascular.</span>
+          </li>
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- IntelligentAssist / AI chip -->
+              <rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="5" x2="8" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="10" y1="5" x2="10" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="10" y1="13" x2="10" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="5" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="5" y1="10" x2="3" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="13" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span><span class="bullet-tech">IntelligentAssist</span> — AI-guided image optimization and auto-measurements to reduce operator dependency.</span>
+          </li>
+          <li>
+            <svg class="bullet-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- MV-Flow / flow wave -->
+              <path d="M2 12 Q4 8 7 10 Q10 12 13 7 Q15 4 16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="2" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="16" cy="6" r="1.5" fill="currentColor"/>
+            </svg>
+            <span><span class="bullet-tech">MV-Flow</span> — Micro-vascular flow imaging for detecting subtle blood flow without the limitations of standard color Doppler.</span>
+          </li>
+        </ul>
+
+        <div class="card-models">
+          <span class="model-pill model-pill--hero">HM70</span>
+          <span class="model-pill">EVO10</span>
+        </div>
+
+        <button class="card-specs-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          View key specifications
+        </button>
+        <div class="card-specs">
+          <div class="spec-row"><span class="spec-label">Imaging Modes</span><span class="spec-value">B, M, Color Doppler, PW, CW, Panoramic, 3D/4D</span></div>
+          <div class="spec-row"><span class="spec-label">Clinical Apps</span><span class="spec-value">Abdominal, OB/GYN, Cardiac, Vascular, MSK, Emergency</span></div>
+          <div class="spec-row"><span class="spec-label">Transducers</span><span class="spec-value">Convex, Linear, Phased Array, Endocavity</span></div>
+          <div class="spec-row"><span class="spec-label">Display</span><span class="spec-value">15.6" LED touch monitor</span></div>
+          <div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">Up to 2 hrs (optional battery pack)</span></div>
+          <div class="spec-row"><span class="spec-label">Connectivity</span><span class="spec-value">DICOM 3.0, USB, Wi-Fi, Ethernet</span></div>
+        </div>
+
+        <button class="btn btn-primary card-cta">Get a quote for the HM70
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 3: ICON SET ── -->
+<div class="preview-label">Preview · 3 of 3 — Custom Icon Set (all 6, hover to see color state)</div>
+<section class="icons-section">
+  <div class="container">
+    <p class="section-label">Icon System</p>
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:.9rem;color:#6B7280;margin-top:8px;margin-bottom:0">Custom inline SVGs · consistent 1.75px stroke · brand teal · domain-specific shapes. Hover each to see the active state.</p>
+
+    <div class="icons-grid">
+
+      <!-- 1. Ultrasound probe / transducer -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="11" y="2" width="8" height="16" rx="4" stroke="currentColor" stroke-width="1.75"/>
+            <line x1="15" y1="18" x2="15" y2="24" stroke="currentColor" stroke-width="1.75" stroke-dasharray="2.5 2"/>
+            <path d="M8 27 Q15 22 22 27" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+            <path d="M5 15 Q15 22 25 15" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" fill="none" opacity=".4"/>
+            <path d="M3 11 Q15 20 27 11" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity=".2"/>
+          </svg>
+        </div>
+        <span class="icon-name">Transducer</span>
+      </div>
+
+      <!-- 2. Scan wave / waveform -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="2" y1="15" x2="6" y2="15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+            <path d="M6 15 Q8 8 10 15 Q12 22 14 15 Q16 8 18 15 Q20 22 22 15 Q24 8 26 15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+            <line x1="26" y1="15" x2="28" y2="15" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="icon-name">Scan Wave</span>
+      </div>
+
+      <!-- 3. Shield with pulse — reliability -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 2.5L4 7v6.5c0 7 5.8 13.5 11 15 5.2-1.5 11-8 11-15V7L15 2.5z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+            <path d="M8 15h3.5l2-4 2.5 8 2-4h4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="icon-name">Reliability</span>
+      </div>
+
+      <!-- 4. Monitor + wrench — service -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.75"/>
+            <line x1="9" y1="22" x2="15" y2="22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+            <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+            <!-- wrench -->
+            <path d="M23 7a4 4 0 01-3 6.9l-2.5 2.5-1.5-1.5 2.5-2.5A4 4 0 0123 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="18" y1="15" x2="21" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="icon-name">Service</span>
+      </div>
+
+      <!-- 5. Globe with route — direct from Korea -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="15" cy="15" r="11" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M4 15h22" stroke="currentColor" stroke-width="1.25" opacity=".4"/>
+            <path d="M15 4a19 19 0 015 11 19 19 0 01-5 11 19 19 0 01-5-11 19 19 0 015-11z" stroke="currentColor" stroke-width="1.25" opacity=".4"/>
+            <!-- route line / arrow -->
+            <path d="M9 9 Q18 8 21 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+            <circle cx="9" cy="9" r="2" fill="currentColor"/>
+            <circle cx="21" cy="21" r="2" stroke="currentColor" stroke-width="1.5" fill="white"/>
+          </svg>
+        </div>
+        <span class="icon-name">Direct Source</span>
+      </div>
+
+      <!-- 6. AI microchip — software -->
+      <div class="icon-item">
+        <div class="icon-wrap">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="9" width="12" height="12" rx="2.5" stroke="currentColor" stroke-width="1.75"/>
+            <line x1="12" y1="9" x2="12" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="15" y1="9" x2="15" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="18" y1="9" x2="18" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="21" x2="12" y2="25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="15" y1="21" x2="15" y2="25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="18" y1="21" x2="18" y2="25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="9" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="9" y1="15" x2="5" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="9" y1="18" x2="5" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="21" y1="12" x2="25" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="21" y1="15" x2="25" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="21" y1="18" x2="25" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- inner AI spark -->
+            <path d="M13 15 l1.5-2.5 1.5 2.5-1.5 2.5z" fill="currentColor" opacity=".6"/>
+          </svg>
+        </div>
+        <span class="icon-name">AI Software</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
