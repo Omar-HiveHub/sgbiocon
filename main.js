@@ -271,10 +271,10 @@
       cta: 'Request a quote for V8',
     },
     HS30: {
-      series: 'General Imaging',
+      series: 'Value Imaging',
       title: 'Samsung HS30',
-      models: 'Routine multi-purpose ultrasound',
-      desc: 'A practical console ultrasound for routine clinical scanning, with clear 2D imaging tools and broad application support for everyday departments.',
+      models: 'Dependable everyday scanning',
+      desc: 'A reliable, no-fuss console for clinics that need dependable everyday imaging without premium-tier pricing. Clear 2D tools and broad application support, built to run day in, day out.',
       specs: [
         ['ClearVision', 'noise reduction and edge enhancement for sharper 2D images'],
         ['S-Harmonic', 'pulse inversion harmonic imaging for more uniform image quality'],
@@ -284,10 +284,10 @@
       cta: 'Request a quote for HS30',
     },
     HS40: {
-      series: 'Women\'s Health / General Imaging',
+      series: 'Value Imaging',
       title: 'Samsung HS40',
-      models: '2D / 3D women\'s health imaging',
-      desc: 'A capable, user-friendly system for women\'s health and general imaging, combining advanced 2D and 3D imaging with intelligent automation tools.',
+      models: '2D / 3D women\'s health value system',
+      desc: 'A capable, user-friendly system for women\'s health and general imaging that keeps proven 2D and 3D performance within reach of growing clinics, without stepping up to premium-tier pricing.',
       specs: [
         ['S-Harmonic', 'harmonic imaging designed to reduce noise and improve uniformity'],
         ['ClearVision / MultiVision', 'image processing tools that improve spatial and contrast detail'],
