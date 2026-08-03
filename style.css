@@ -1028,26 +1028,33 @@ body {
   color: #33726F;
 }
 
+/* Four device tiles in an even row (V / CV / HM / HS Series) */
 .hero-device--primary {
-  left: 6%;
+  left: 5%;
   top: 10%;
-  width: 33%;
-  height: 58%;
+  width: 20.5%;
+  height: 54%;
 }
 
 .hero-device--secondary {
-  left: 34%;
-  top: 7%;
-  width: 32%;
-  height: 62%;
-  z-index: 3;
+  left: 28.2%;
+  top: 10%;
+  width: 20.5%;
+  height: 54%;
 }
 
 .hero-device--portable {
-  right: 6%;
+  left: 51.3%;
   top: 10%;
-  width: 31%;
-  height: 58%;
+  width: 20.5%;
+  height: 54%;
+}
+
+.hero-device--value {
+  left: 74.5%;
+  top: 10%;
+  width: 20.5%;
+  height: 54%;
 }
 
 .hero-visual-card {
@@ -1538,26 +1545,7 @@ body {
     inset: 22px;
   }
 
-  .hero-device--primary {
-    left: 6%;
-    top: 12%;
-    width: 31%;
-    height: 52%;
-  }
-
-  .hero-device--secondary {
-    left: 35%;
-    top: 10%;
-    width: 30%;
-    height: 54%;
-    padding: 12px 10px;
-  }
-
-  .hero-device--portable {
-    right: 6%;
-    top: 12%;
-    width: 30%;
-    height: 52%;
+  .hero-device {
     padding: 12px 10px;
   }
 
@@ -1668,19 +1656,6 @@ body {
     border-radius: 16px;
     padding: 10px 8px 9px;
     gap: 8px;
-  }
-
-  .hero-device--primary {
-    top: 13%;
-  }
-
-  .hero-device--secondary {
-    width: 30%;
-    height: 50%;
-  }
-
-  .hero-device--portable {
-    top: 13%;
   }
 
   .hero-visual-card {
