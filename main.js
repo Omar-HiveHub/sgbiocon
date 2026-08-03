@@ -218,6 +218,19 @@
      PRODUCT VARIANT CYCLING
      ---------------------------------------------------------- */
   const variantContent = {
+    V4: {
+      series: 'General Imaging',
+      title: 'Samsung V4',
+      models: 'Compact entry-level imaging',
+      desc: 'A compact, entry-level V-series console that brings Crystal Architecture imaging and AI-assisted workflow tools to smaller clinics, private practices, and point-of-care settings.',
+      specs: [
+        ['Crystal Architecture', 'CrystalBeam beamforming and S-Vue transducers for clear, high-resolution imaging'],
+        ['S-Detect', 'AI-assisted lesion detection and analysis for standardized reporting'],
+        ['EzAssist', 'on-screen anatomical scan guidance to support less-experienced users'],
+        ['Intelligent Assist', 'automated measurements and view recognition to streamline routine exams'],
+      ],
+      cta: 'Request a quote for V4',
+    },
     V5: {
       series: 'General Imaging',
       title: 'Samsung V5',
@@ -308,6 +321,19 @@
         ['Clinical flexibility', 'supports broad applications beyond echo when needed'],
       ],
       cta: 'Request a quote for CV5',
+    },
+    CV6: {
+      series: 'Cardiovascular',
+      title: 'Samsung CV6',
+      models: 'Mid-tier cardiovascular imaging',
+      desc: 'A mid-tier dedicated cardiovascular system for echo and vascular labs that need AI-assisted cardiac quantification and a cardiology-optimized workflow, without stepping up to the premium CV7 or CV8.',
+      specs: [
+        ['Crystal Architecture', 'CrystalBeam and CrystalLive on S-Vue transducers for clear cardiac imaging'],
+        ['HeartAssist', 'AI that auto-classifies echo views and returns measurements for consistent adult TTE'],
+        ['AutoEF', 'automated ejection-fraction quantification for fast, reproducible LV function'],
+        ['Strain+', 'quantitative global and segmental LV wall-motion (strain) analysis'],
+      ],
+      cta: 'Request a quote for CV6',
     },
     CV7: {
       series: 'Cardiovascular',
