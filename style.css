@@ -635,6 +635,45 @@ ul, ol { list-style: none; }
 .closing-cta__btn svg { transition: transform var(--ease); }
 .closing-cta__btn:hover svg { transform: translateX(3px); }
 
+/* CTA rows (primary + WhatsApp side by side) */
+.hero__cta-row,
+.closing-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.closing-cta__actions { justify-content: center; }
+
+/* WhatsApp button on the dark closing section */
+.closing-cta__btn--wa {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, .55);
+  box-shadow: none;
+}
+.closing-cta__btn--wa:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: #fff;
+}
+.closing-cta__btn--wa svg { transform: none; }
+.closing-cta__btn--wa:hover svg { transform: none; }
+
+/* Prominent WhatsApp (green) button in the closing CTA */
+.closing-cta__btn--wa-solid {
+  background: #25D366;
+  color: #0b3d2e;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, .35);
+}
+.closing-cta__btn--wa-solid:hover {
+  background: #1fb457;
+  color: #0b3d2e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, .45);
+}
+.closing-cta__btn--wa-solid svg { transform: none; }
+.closing-cta__btn--wa-solid:hover svg { transform: none; }
+
 /* ────────────────────────────────────────────────────────────
    FOOTER
    ──────────────────────────────────────────────────────────── */
